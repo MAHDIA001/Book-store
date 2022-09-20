@@ -5,7 +5,6 @@ const inputBook = document.querySelector('.input-book');
 const storedBooks = JSON.parse(localStorage.getItem('books'));
 let bookShelf = [];
 let filter = [];
-const counter = '0';
 
 function libraryBooks(object) {
   return `<div class='${object.author}'>
@@ -49,8 +48,8 @@ function add() {
     });
     if (bookShelf.length > 0) {
       currentBook.forEach((book) => library.insertAdjacentHTML('beforeend', libraryBooks(book)));
-    } 
-   }
+    }
+  }
   inputAuthor.value = '';
   inputBook.value = '';
   localStorage.setItem('books', JSON.stringify(bookShelf));
