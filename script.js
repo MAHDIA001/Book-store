@@ -1,17 +1,15 @@
 const form = document.querySelector('.form');
-const storedBooks = JSON.parse(localStorage.getItem('books'));
+const BookdBooks = JSON.parse(localStorage.getItem('books'));
 class Book {
   constructor(title, author) {
     this.title = title;
     this.author = author;
   }
-}
 
-class UI {
   static displayBooks() {
-    const books = Store.getBooks();
+    const books = Book.getBooks();
 
-    books.forEach((book) => UI.addBookToList(book));
+    books.forEach((book) => Book.addBookToList(book));
   }
   static addBookToList(book) {
     const library = document.querySelector('.library');
@@ -44,9 +42,7 @@ class UI {
     document.querySelector('.input-author').value = '';
     document.querySelector('.input-book').value = '';
   }
-}
 
-class Store {
   static getBooks() {
     let books;
     if (localStorage.getItem('books') === null) {
@@ -59,13 +55,13 @@ class Store {
   }
 
   static addBook(book) {
-    const books = Store.getBooks();
+    const books = Book.getBooks();
     books.push(book);
     localStorage.setItem('books', JSON.stringify(books));
   }
 
   static removeBook(book) {
-    const books = Store.getBooks();
+    const books = Book.getBooks();
     book.forEach((elem, index) => {
       elem.parentElement.remove();
       books.splice(index, 1);
@@ -73,23 +69,22 @@ class Store {
     });
   }
 }
-document.addEventListener('DOMContentLoaded', UI.displayBooks);
+document.addEventListener('DOMContentLoaded', Book.displayBooks);
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const author = document.querySelector('.input-author').value;
   const title = document.querySelector('.input-book').value;
   if (title === '' || author === '') {
-    UI.showAlert('Please fill all fields', 'alert');
+    Book.showAlert('Please fill all fields', 'alert');
   } else {
     const book = new Book(title, author);
-    UI.addBookToList(book);
-    Store.addBook(book);
-    UI.clearFields();
-    UI.showAlert('book added successfully!', 'success');
+    Book.addBookToList(book);
+    Book.addBook(book);
+    Book.clearFields();
+    Book.showAlert('book added successfully!', 'success');
   }
   document.querySelector('.library').addEventListener('click', (e) => {
-    UI.deleteBooks(e.target);
-    Store.removeBook();
-    UI.showAlert('book has been removed!', 'success');
+    Book.deleteBooks(e.target);
+    Book.showAlert('book has been removed!', 'success');
   });
 });
