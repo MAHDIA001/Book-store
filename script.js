@@ -26,7 +26,6 @@ class Book {
     removeButton.addEventListener('click', (e) => {
       this.removeBook(book.index);
       this.deleteBooks(e.target);
-      this.showAlert('book has been removed!', 'success');
     });
   }
 
