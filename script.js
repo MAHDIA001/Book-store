@@ -1,6 +1,6 @@
 const form = document.querySelector('.form');
 class Book {
-  constructor(title, author) {
+  constructor(title, author,index) {
     this.title = title;
     this.author = author;
     this.index;
@@ -34,7 +34,6 @@ class Book {
     if (books.length === 0) {
       book.index = 0;
     } else {
-      console.log(books);
       const lastIndex = books.slice(-1).pop().index;
       book.index = lastIndex + 1;
     }
