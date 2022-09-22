@@ -1,67 +1,83 @@
 const form = document.querySelector('.form');
-const library = document.querySelector('.library');
-const inputAuthor = document.querySelector('.input-author');
-const inputBook = document.querySelector('.input-book');
-const storedBooks = JSON.parse(localStorage.getItem('books'));
-let bookShelf = [];
-let filter = [];
+class Book {
+  constructor(title, author, index) {
+    this.title = title;
+    this.author = author;
+    this.index = index;
+  }
 
-function libraryBooks(object) {
-  return `<div class='${object.author}'>
-    <h1>${object.book}</h1>
-    <p>${object.author}</p> 
-    <hr> 
-    <button class='remove'>
+  static displayBooks() {
+    const books = Book.getBooks();
+    books.forEach((book) => Book.addBookToList(book));
+  }
+
+  static addBookToList(book) {
+    const library = document.querySelector('.library');
+    const row = document.createElement('tr');
+    row.innerHTML = `
+    <td>${book.title}</td>
+    <td> by ${book.author}</td> 
+    <td><button class='remove'>
     remove
-    </button>
-    </div>`;
-}
-
-function remove() {
-  if (bookShelf.length > 0) {
-    const removebtn = document.querySelectorAll('.remove');
-    removebtn.forEach((element) => element.addEventListener('click', () => {
-      const parentNodeClass = element.parentNode.className;
-      element.parentNode.remove();
-      bookShelf = bookShelf.filter((x) => x.author !== parentNodeClass);
-      localStorage.setItem('books', JSON.stringify(bookShelf));
-    }));
+    </button></td>
+   `;
+    library.appendChild(row);
+    const removeButton = row.querySelector('button');
+    removeButton.addEventListener('click', (e) => {
+      this.removeBook(book.index);
+      this.deleteBooks(e.target);
+    });
   }
-}
 
-function add() {
-  if (inputAuthor.value !== '' && inputBook.value !== '') {
-    const currentBook = [];
-    currentBook.push({
-      author: inputAuthor.value,
-      book: inputBook.value,
-    });
-    filter = bookShelf.filter((x) => x.book === currentBook[0].book);
-    if (filter.length > 0) {
-      inputAuthor.value = '';
-      inputBook.value = '';
-      return;
+  static addBook(book) {
+    const books = this.getBooks();
+    if (books.length === 0) {
+      book.index = 0;
+    } else {
+      const lastIndex = books.slice(-1).pop().index;
+      book.index = lastIndex + 1;
     }
-    bookShelf.push({
-      author: inputAuthor.value,
-      book: inputBook.value,
-    });
-    if (bookShelf.length > 0) {
-      currentBook.forEach((book) => library.insertAdjacentHTML('beforeend', libraryBooks(book)));
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static deleteBooks(el) {
+    if (el.classList.contains('remove')) {
+      el.parentElement.parentElement.remove();
     }
   }
-  inputAuthor.value = '';
-  inputBook.value = '';
-  localStorage.setItem('books', JSON.stringify(bookShelf));
+
+  static clearFields() {
+    document.querySelector('.input-author').value = '';
+    document.querySelector('.input-book').value = '';
+  }
+
+  static getBooks() {
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+
+    return books;
+  }
+
+  static removeBook(elemIndex) {
+    let books = Book.getBooks();
+    books = books.filter(
+      (book) => parseInt(book.index, 10) !== parseInt(elemIndex, 10),
+    );
+    localStorage.setItem('books', JSON.stringify(books));
+  }
 }
-form.addEventListener('submit', () => {
-  add();
-  remove();
+document.addEventListener('DOMContentLoaded', Book.displayBooks);
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const author = document.querySelector('.input-author').value;
+  const title = document.querySelector('.input-book').value;
+  const book = new Book(title, author);
+  Book.addBookToList(book);
+  Book.addBook(book);
+  Book.clearFields();
 });
-if (storedBooks !== null) {
-  bookShelf = storedBooks;
-  bookShelf.forEach((book) => {
-    library.insertAdjacentHTML('beforeend', libraryBooks(book));
-    remove();
-  });
-}
