@@ -1,9 +1,9 @@
 const form = document.querySelector('.form');
 class Book {
-  constructor(title, author,index) {
+  constructor(title, author, index) {
     this.title = title;
     this.author = author;
-    this.index;
+    this.index = index;
   }
 
   static displayBooks() {
@@ -66,7 +66,7 @@ class Book {
   static removeBook(elemIndex) {
     let books = Book.getBooks();
     books = books.filter(
-      (book) => parseInt(book.index, 10) !== parseInt(elemIndex, 10)
+      (book) => parseInt(book.index, 10) !== parseInt(elemIndex, 10),
     );
     localStorage.setItem('books', JSON.stringify(books));
   }
