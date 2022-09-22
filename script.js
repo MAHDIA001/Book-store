@@ -3,6 +3,7 @@ class Book {
   constructor(title, author) {
     this.title = title;
     this.author = author;
+    this.index;
   }
 
   static displayBooks() {
@@ -21,21 +22,31 @@ class Book {
     </button></td>
    `;
     library.appendChild(row);
+    const removeButton = row.querySelector('button');
+    removeButton.addEventListener('click', (e) => {
+      this.removeBook(book.index);
+      this.deleteBooks(e.target);
+      this.showAlert('book has been removed!', 'success');
+    });
+  }
+
+  static addBook(book) {
+    const books = this.getBooks();
+    if (books.length === 0) {
+      book.index = 0;
+    } else {
+      console.log(books);
+      const lastIndex = books.slice(-1).pop().index;
+      book.index = lastIndex + 1;
+    }
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
   }
 
   static deleteBooks(el) {
     if (el.classList.contains('remove')) {
       el.parentElement.parentElement.remove();
     }
-  }
-
-  static showAlert(message, className) {
-    const div = document.createElement('div');
-    div.className = `alert-${className}`;
-    div.appendChild(document.createTextNode(message));
-    const container = document.querySelector('.books');
-    container.appendChild(div);
-    // setTimeout(() =>document.querySelector('.alert').remove(),3000)
   }
 
   static clearFields() {
@@ -54,19 +65,12 @@ class Book {
     return books;
   }
 
-  static addBook(book) {
-    const books = Book.getBooks();
-    books.push(book);
+  static removeBook(elemIndex) {
+    let books = Book.getBooks();
+    books = books.filter(
+      (book) => parseInt(book.index, 10) !== parseInt(elemIndex, 10)
+    );
     localStorage.setItem('books', JSON.stringify(books));
-  }
-
-  static removeBook(book) {
-    const books = Book.getBooks();
-    book.forEach((elem, index) => {
-      elem.parentElement.remove();
-      books.splice(index, 1);
-      localStorage.setItem('books', JSON.stringify(books));
-    });
   }
 }
 document.addEventListener('DOMContentLoaded', Book.displayBooks);
@@ -74,17 +78,8 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   const author = document.querySelector('.input-author').value;
   const title = document.querySelector('.input-book').value;
-  if (title === '' || author === '') {
-    Book.showAlert('Please fill all fields', 'alert');
-  } else {
-    const book = new Book(title, author);
-    Book.addBookToList(book);
-    Book.addBook(book);
-    Book.clearFields();
-    Book.showAlert('book added successfully!', 'success');
-  }
-  document.querySelector('.library').addEventListener('click', (e) => {
-    Book.deleteBooks(e.target);
-    Book.showAlert('book has been removed!', 'success');
-  });
+  const book = new Book(title, author);
+  Book.addBookToList(book);
+  Book.addBook(book);
+  Book.clearFields();
 });
