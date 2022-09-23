@@ -4,6 +4,31 @@ body {
   flex-direction: column;
 }
 
+.nav {
+ display: flex;
+ list-style: none;
+ gap: 30px;
+}
+
+
+.logo, li a {
+  text-decoration: none;
+  color: #333;
+  font-size: large;
+}
+
+a:hover{
+  color: #04aa6d;
+}
+
+.logo {
+ font-weight: 800;
+}
+
+.navbar li:nth-child(2) {
+  margin-left: 800px;
+}
+
 table {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -70,4 +95,40 @@ input {
 .remove:hover {
   background-color: rgb(184, 14, 14);
   color: #fff;
+}
+
+.nav__link--1,
+.nav__link--2 {
+  border-right: 1px solid #000;
+  padding-right: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  gap: 10px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+
+.contac {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.copyright {
+  position: fixed;
+  bottom: 0;
+  border: 1px solid #000;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.invisible {
+  display: none;
 }
