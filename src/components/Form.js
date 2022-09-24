@@ -2,7 +2,7 @@ import Book from '../modules/Books.js';
 
 export default class Form {
   constructor() {
-    this.__content = `
+    this.content = `
         <section>
             <form class = "form">
             <input class="title" type="text" placeholder="book Title" required>
@@ -14,10 +14,11 @@ export default class Form {
   }
 
   get content() {
-    return this.__content;
+    return this.content;
   }
 
   activeFormSubmit() {
+   this.content;
     const form = document.querySelector('.form');
     const author = document.querySelector('.author');
     const title = document.querySelector('.title');
