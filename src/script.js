@@ -38,7 +38,7 @@ navLinks.forEach((element) => {
         container.innerHTML = contentData.content;
         break;
       }
-        default: {
+      default: {
         defaultData();
       }
     }
