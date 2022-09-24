@@ -8,27 +8,22 @@
     <title>Document</title>
 </head>
 
-<body>
-    
-    <h1>Awesome Books</h1>
-    <div class="books"></div>
-    <table>
-        <th>Book</th>
-        <th>Author</th>
-        <th>remove</th>
-         <tbody class="library">
-
-         </tbody>
-    </table>
-
-
-    <form class = "form">
-    <input class="input-author" type="text" placeholder="Author">
-        <input class="input-book" type="text" placeholder="book">
-    <button type="submit" class="add">
-            Add
-        </button>
-    </form>
-    <script src="script.js"></script>
+<body> 
+    <header>
+        <nav class="navbar">
+            <ul class="nav">
+                <li><a href="javascript:void(0)" class="logo">Awesome Books</a></li>
+                <li><a href="javascript:void(0)" class="nav-link" data-page="list">List</a></li>
+                <li><a href="javascript:void(0)" class="nav-link" data-page="form">add new</a></li>
+                <li><a href="javascript:void(0)" class="nav-link" data-page="contact">contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="app">
+    </main>
+    <footer>
+        <p>Footer credential</p>
+    </footer>
+    <script type="module" src="./src/script.js"></script>
 </body>
 </html>
