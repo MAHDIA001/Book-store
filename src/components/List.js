@@ -1,6 +1,6 @@
 export default class List {
   constructor() {
-    this.__content = `
+    this.content = `
     <section>
         <h1 class="h1 invisible">Awesome Books</h1>
         <div class="books"></div>
@@ -20,10 +20,11 @@ export default class List {
   }
 
   get content() {
-    return this.__content;
+    return this.content;
   }
 
   displayBooks() {
+  this.content;
     const library = document.querySelector('.library');
     let dataStored = [];
     let books = [];
