@@ -5,7 +5,7 @@ export default class Book {
   }
 
   addBook() {
-    this.title = title;
+    this.content = content;
     let dataStored = [];
     let books = [];
     if (localStorage.getItem('books')) {
@@ -17,6 +17,6 @@ export default class Book {
   }
 
   removeBook() {
-    this.content;
+    this.content = content;
   }
 }
