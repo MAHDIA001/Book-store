@@ -24,7 +24,6 @@ export default class List {
   }
 
   displayBooks() {
-  this.content;
     const library = document.querySelector('.library');
     let dataStored = [];
     let books = [];
@@ -52,7 +51,6 @@ export default class List {
   }
 
   deleteBook() {
-  this.content;
     const delBtn = document.querySelectorAll('.delete-btn');
     delBtn.forEach((element, index) => {
       element.addEventListener('click', () => {
