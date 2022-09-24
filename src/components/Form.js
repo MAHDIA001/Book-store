@@ -20,9 +20,10 @@ export default class Form {
     const form = document.querySelector('.form');
     const author = document.querySelector('.author');
     const title = document.querySelector('.title');
-    form.addEventListener('submit', () => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
       const data = new Book(title, author);
-      data.addBook();
+      console.log(data);
     });
   }
 }
