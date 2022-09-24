@@ -1,10 +1,11 @@
 export default class Book {
   constructor(title = 'undefined', author = 'undefined') {
-    this.__title = title;
-    this.__author = author;
+    this.title = title;
+    this.author = author;
   }
 
   addBook() {
+  this.content
     let dataStored = [];
     let books = [];
     if (localStorage.getItem('books')) {
