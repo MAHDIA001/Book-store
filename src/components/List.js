@@ -24,7 +24,7 @@ export default class List {
   }
 
   displayBooks() {
-    const library = document.querySelector('.library');
+    this.library = document.querySelector('.library');
     let dataStored = [];
     let books = [];
     if (localStorage.getItem('books')) {
@@ -51,7 +51,7 @@ export default class List {
   }
 
   deleteBook() {
-    const delBtn = document.querySelectorAll('.delete-btn');
+    this.delBtn = document.querySelectorAll('.delete-btn');
     delBtn.forEach((element, index) => {
       element.addEventListener('click', () => {
         element.parentNode.parentNode.remove();
