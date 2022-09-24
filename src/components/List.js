@@ -36,7 +36,7 @@ export default class List {
             <td>${element._title}</td>
             <td>${element._author}</td>
             <td>
-                <button id=${index}>Remove</button>
+                <button class="delete-btn" id=${index}>Remove</button>
             </td>
         </tr>
         `;
@@ -48,5 +48,17 @@ export default class List {
         </tr>
         `;
     }
+  }
+
+  deleteBook() {
+    const delBtn = document.querySelectorAll('.delete-btn');
+    delBtn.forEach((element, index) => {
+      element.addEventListener('click', () => {
+        element.parentNode.parentNode.remove();
+        const books = JSON.parse(localStorage.getItem('books'));
+        books.splice(index, 1);
+        localStorage.setItem('books', JSON.stringify(books));
+      });
+    });
   }
 }
