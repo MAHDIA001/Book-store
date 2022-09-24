@@ -44,4 +44,5 @@ navLinks.forEach((element) => {
 function defaultData() {
   const listData = new List();
   container.innerHTML = listData.content;
+  listData.displayBooks();
 }
