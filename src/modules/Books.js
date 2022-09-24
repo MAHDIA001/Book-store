@@ -4,7 +4,7 @@ export default class Book {
     this.author = author;
   }
 
-   static addBook() {
+  static addBook() {
     let dataStored = [];
     let books = [];
     if (localStorage.getItem('books')) {
@@ -15,7 +15,5 @@ export default class Book {
     localStorage.setItem('books', JSON.stringify(books));
   }
 
-  static removeBook() {
-   
-  }
+  static removeBook() {}
 }
