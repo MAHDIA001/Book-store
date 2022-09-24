@@ -23,8 +23,8 @@ export default class List {
     return this.content;
   }
 
-  displayBooks() {
-    this.library = document.querySelector('.library');
+   static displayBooks() {
+    const library = document.querySelector('.library');
     let dataStored = [];
     let books = [];
     if (localStorage.getItem('books')) {
@@ -49,9 +49,8 @@ export default class List {
         `;
     }
   }
-
-  deleteBook() {
-    this.delBtn = document.querySelectorAll('.delete-btn');
+  static deleteBook() {
+    const delBtn = document.querySelectorAll('.delete-btn');
     delBtn.forEach((element, index) => {
       element.addEventListener('click', () => {
         element.parentNode.parentNode.remove();
