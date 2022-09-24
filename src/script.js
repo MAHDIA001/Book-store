@@ -20,27 +20,27 @@ defaultData();
 
 // add event listener to page navigation links
 navLinks.forEach((element) => {
-  const target = element.getAttribute('data-page');  
+  const target = element.getAttribute('data-page');
   element.addEventListener('click', () => {
     switch (target) {
       case 'list': {
         defaultData();
         break;
-       }
+      }
       case 'form': {
-       const formData = new Form();
-       container.innerHTML = formData.content;
-       formData.activeFormSubmit();
-       break;
-       }
+        const formData = new Form();
+        container.innerHTML = formData.content;
+        formData.activeFormSubmit();
+        break;
+      }
       case 'contact': {
-       const contentData = new Contact();
-       container.innerHTML = contentData.content;
-       break;
-       }
-      default: {
-      defaultData();
-      }       
+        const contentData = new Contact();
+        container.innerHTML = contentData.content;
+        break;
+      }
+        default: {
+        defaultData();
+      }
     }
   });
 });
