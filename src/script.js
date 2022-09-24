@@ -1,4 +1,3 @@
-import Book from './modules/Books.js';
 import Form from './components/Form.js';
 import List from './components/List.js';
 import Contact from './components/Contact.js';
@@ -28,7 +27,7 @@ navLinks.forEach((element) => {
           container.innerHTML = formData.content;
         }
         break;
-      case 'content':
+      case 'contact':
         {
           const contentData = new Contact();
           container.innerHTML = contentData.content;
