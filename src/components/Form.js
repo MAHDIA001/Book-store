@@ -18,7 +18,7 @@ export default class Form {
   }
 
   activeFormSubmit() {
-    const form = document.querySelector('.form');
+    this.form = document.querySelector('.form');
     const author = document.querySelector('.author');
     const title = document.querySelector('.title');
     form.addEventListener('submit', (e) => {
