@@ -22,13 +22,13 @@ export default class Form {
     const author = document.querySelector('.author');
     const title = document.querySelector('.title');
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const authorName = author.value;
-      const bookTitle = title.value;
-      const data = new Book(bookTitle, authorName);
-      data.addBook();
-      author.value = '';
-      title.value = '';
+     e.preventDefault();
+     const authorName = author.value;
+     const bookTitle = title.value;
+     const data = new Book(bookTitle, authorName);
+     data.addBook();
+     author.value = '';
+     title.value = '';
     });
   }
 }
