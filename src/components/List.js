@@ -48,8 +48,7 @@ export default class List {
         </tr>
         `;
     }
-  }
-  
+  }  
   static deleteBook() {
     const delBtn = document.querySelectorAll('.delete-btn');
     delBtn.forEach((element, index) => {
