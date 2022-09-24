@@ -4,8 +4,8 @@ export default class Book {
     this.author = author;
   }
 
-  addBook() {
-    this.dataStored = [];
+   static addBook() {
+    let dataStored = [];
     let books = [];
     if (localStorage.getItem('books')) {
       dataStored = localStorage.getItem('books');
@@ -15,7 +15,7 @@ export default class Book {
     localStorage.setItem('books', JSON.stringify(books));
   }
 
-  removeBook() {
-    this.content = '';
+  static removeBook() {
+   
   }
 }
