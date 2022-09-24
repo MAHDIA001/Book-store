@@ -34,8 +34,8 @@ export default class List {
       books.forEach((element, index) => {
         library.innerHTML += `
         <tr>
-            <td>${element._title}</td>
-            <td>${element._author}</td>
+            <td>${element.title}</td>
+            <td>${element.author}</td>
             <td>
                 <button class="delete-btn" id=${index}>Remove</button>
             </td>
@@ -52,6 +52,7 @@ export default class List {
   }
 
   deleteBook() {
+  this.content;
     const delBtn = document.querySelectorAll('.delete-btn');
     delBtn.forEach((element, index) => {
       element.addEventListener('click', () => {
