@@ -22,8 +22,10 @@ export default class Form {
     const title = document.querySelector('.title');
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const data = new Book(title, author);
-      console.log(data);
+      const authorName = author.value;
+      const bookTitle = title.value;
+      const data = new Book(bookTitle, authorName);
+      data.addBook();
     });
   }
 }

@@ -1,25 +1,38 @@
 export default class Book {
-  constructor(title, author) {
+  constructor(title = 'undefined', author = 'undefined') {
     this._title = title;
     this._author = author;
-    this.dataStored = [];
-    if (localStorage.getItem('books')) {
-      dataStored = JSON.parse(localStorage.getItem('books'));
-    }
   }
 
   displayBooks() {
+    let dataStored = [];
+    let books = [];
     if (localStorage.getItem('books')) {
       dataStored = localStorage.getItem('books');
       books = JSON.parse(dataStored);
+
+      books.forEach((element, index) => {
+        return `
+        <tr>
+            <td></td>
+        </tr>
+        `;
+      });
     } else {
       // When local storage is empty
     }
   }
 
   addBook() {
-    this.dataStored.push(this);
-    localStorage.setItem('books', JSON.stringify(this.dataStored));
+    let dataStored = [];
+    let books = [];
+    if (localStorage.getItem('books')) {
+      dataStored = localStorage.getItem('books');
+      books = JSON.parse(dataStored);
+    }
+    books.push(this);
+    localStorage.setItem('books', JSON.stringify(books));
+    console.log(books);
   }
 
   removeBook() {}
