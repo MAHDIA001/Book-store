@@ -23,7 +23,7 @@ export default class List {
     return this.content;
   }
 
-   static displayBooks() {
+  static displayBooks() {
     const library = document.querySelector('.library');
     let dataStored = [];
     let books = [];
@@ -49,6 +49,7 @@ export default class List {
         `;
     }
   }
+  
   static deleteBook() {
     const delBtn = document.querySelectorAll('.delete-btn');
     delBtn.forEach((element, index) => {
