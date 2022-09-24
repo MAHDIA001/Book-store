@@ -14,6 +14,6 @@ export default class Contact {
   }
 
   get content() {
-    return this._content;
+    return this.__content;
   }
 }
