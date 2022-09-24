@@ -2,7 +2,7 @@ import Book from '../modules/Books.js';
 
 export default class Form {
   constructor() {
-    this._content = `
+    this.__content = `
         <section>
             <form class = "form">
             <input class="title" type="text" placeholder="book Title" required>
@@ -14,7 +14,7 @@ export default class Form {
   }
 
   get content() {
-    return this._content;
+    return this.__content;
   }
 
   activeFormSubmit() {
