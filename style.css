@@ -5,24 +5,24 @@ body {
 }
 
 .nav {
- display: flex;
- list-style: none;
- gap: 30px;
+  display: flex;
+  list-style: none;
+  gap: 30px;
 }
 
-
-.logo, li a {
+.logo, 
+li a {
   text-decoration: none;
   color: #333;
   font-size: large;
 }
 
-a:hover{
+a:hover {
   color: #04aa6d;
 }
 
 .logo {
- font-weight: 800;
+  font-weight: 800;
 }
 
 .navbar li:nth-child(2) {
@@ -55,12 +55,6 @@ th {
   text-align: left;
   background-color: #04aa6d;
   color: white;
-}
-
-.form {
-  margin: 30px;
-  display: flex;
-  gap: 20px;
 }
 
 input {
@@ -111,7 +105,6 @@ input {
   text-align: center;
   margin: 0 auto;
 }
-
 
 .contac {
   width: 90%;
