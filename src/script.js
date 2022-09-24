@@ -25,6 +25,7 @@ navLinks.forEach((element) => {
         {
           const formData = new Form();
           container.innerHTML = formData.content;
+          formData.activeFormSubmit();
         }
         break;
       case 'contact':
