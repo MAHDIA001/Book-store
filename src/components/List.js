@@ -1,6 +1,6 @@
 export default class List {
   constructor() {
-    this._content = `
+    this.__content = `
     <section>
         <h1 class="h1 invisible">Awesome Books</h1>
         <div class="books"></div>
@@ -20,11 +20,11 @@ export default class List {
   }
 
   get content() {
-    return this._content;
+    return this.__content;
   }
 
   displayBooks() {
-    let library = document.querySelector('.library');
+    const library = document.querySelector('.library');
     let dataStored = [];
     let books = [];
     if (localStorage.getItem('books')) {
