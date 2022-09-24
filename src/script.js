@@ -21,24 +21,28 @@ defaultData();
 // add event listener to page navigation links
 navLinks.forEach((element) => {
   const target = element.getAttribute('data-page');
-  element.addEventListener('click', () => {
   
+  element.addEventListener('click', () => {
     switch (target) {
-     case 'list':
+      case 'list': {
        defaultData();
        break;
-      case 'form':
-       const formData = new Form();
-       container.innerHTML = formData.content;
-       formData.activeFormSubmit();
+       }
+       case 'form': {
+        const formData = new Form();
+        container.innerHTML = formData.content;
+        formData.activeFormSubmit();
         break;
-      case 'contact':
+       }
+       case 'contact': {
         const contentData = new Contact();
         container.innerHTML = contentData.content;
         break;
-      default: 
+        }
+        default: {
         defaultData();
+        }
+        
     }
-    
   });
 });
