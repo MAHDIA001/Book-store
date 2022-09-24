@@ -4,8 +4,8 @@ export default class Form {
     this._content = `
         <section>
             <form class = "form">
-            <input class="title" type="text" placeholder="book Title">
-            <input class="author" type="text" placeholder="Book Author">
+            <input class="title" type="text" placeholder="book Title" required>
+            <input class="author" type="text" placeholder="Book Author" required>
             <button type="submit" class="add"> Add </button>
             </form>
         </section>
@@ -26,6 +26,8 @@ export default class Form {
       const bookTitle = title.value;
       const data = new Book(bookTitle, authorName);
       data.addBook();
+      author.value = '';
+      title.value = '';
     });
   }
 }
