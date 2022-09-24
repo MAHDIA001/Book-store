@@ -8,6 +8,13 @@ const navLinks = document.querySelectorAll('.nav-link');
 // get DOM of page container
 const container = document.getElementById('app');
 
+function defaultData() {
+  const listData = new List();
+  container.innerHTML = listData.content;
+  listData.displayBooks();
+  listData.deleteBook();
+}
+
 // load default page
 defaultData();
 
@@ -17,33 +24,28 @@ navLinks.forEach((element) => {
   element.addEventListener('click', () => {
     switch (target) {
       case 'list':
-        {
+        
           defaultData();
-        }
+        
         break;
       case 'form':
-        {
+        
           const formData = new Form();
           container.innerHTML = formData.content;
           formData.activeFormSubmit();
-        }
+        
         break;
       case 'contact':
-        {
+        
           const contentData = new Contact();
           container.innerHTML = contentData.content;
-        }
+        
         break;
-      default: {
+      default: 
         defaultData();
-      }
+      
     }
   });
 });
 
-function defaultData() {
-  const listData = new List();
-  container.innerHTML = listData.content;
-  listData.displayBooks();
-  listData.deleteBook();
-}
+
