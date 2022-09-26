@@ -13,7 +13,7 @@ export default class Contact {
             `;
   }
 
-  get content() {
+  get content () {
     return this.content;
   }
 }

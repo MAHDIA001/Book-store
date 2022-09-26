@@ -1,6 +1,7 @@
 import Form from './components/Form.js';
 import List from './components/List.js';
 import Contact from './components/Contact.js';
+import { DateTime } from 'luxon';
 
 // get DOM of navigation links
 const navLinks = document.querySelectorAll('.nav-link');
@@ -8,7 +9,7 @@ const navLinks = document.querySelectorAll('.nav-link');
 // get DOM of page container
 const container = document.getElementById('app');
 
-function defaultData() {
+ const defaultData = () =>  {
   const listData = new List();
   container.innerHTML = listData.content;
   listData.displayBooks();
@@ -44,3 +45,6 @@ navLinks.forEach((element) => {
     }
   });
 });
+const DateTime = require('luxon');
+const now = DateTime.now();
+document.querySelector(".date").innerHTML = DateTime.now().toString();
